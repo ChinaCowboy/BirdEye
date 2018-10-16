@@ -11507,11 +11507,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\projects\\BirdEye\\BirdEyeDetector\\BirdEyeDetector.csproj",
+      "projectUniqueName": "C:\\projects\\BirdEye\\src\\BirdEyeDetectorWeb\\BirdEyeDetector.csproj",
       "projectName": "BirdEyeDetector",
-      "projectPath": "C:\\projects\\BirdEye\\BirdEyeDetector\\BirdEyeDetector.csproj",
+      "projectPath": "C:\\projects\\BirdEye\\src\\BirdEyeDetectorWeb\\BirdEyeDetector.csproj",
       "packagesPath": "C:\\Users\\BNIU\\.nuget\\packages\\",
-      "outputPath": "C:\\projects\\BirdEye\\BirdEyeDetector\\obj\\",
+      "outputPath": "C:\\projects\\BirdEye\\src\\BirdEyeDetectorWeb\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
