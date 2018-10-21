@@ -3,8 +3,8 @@ import numpy as np
 import os
 import sys
 
-import utils
-import model as modellib
+from mrcnn import utils
+from mrcnn import model as modellib
 
 ROOT_DIR = os.getcwd()
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
@@ -12,7 +12,7 @@ COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
 if not os.path.exists(COCO_MODEL_PATH):
     utils.download_trained_weights(COCO_MODEL_PATH)
 
-sys.path.append(os.path.join(ROOT_DIR, "samples/coco/"))  # To find local version
+sys.path.append(os.path.join(ROOT_DIR, "Mask_RCNN/samples/coco/"))  # To find local version
 import coco
 
 class InferenceConfig(coco.CocoConfig):

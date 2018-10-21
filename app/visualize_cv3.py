@@ -2,9 +2,8 @@ import cv2
 import numpy as np
 import os
 import sys
-
-import utils
-import model as modellib
+from mrcnn import utils
+from mrcnn import model as modellib
 
 ROOT_DIR = os.getcwd()
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
@@ -12,7 +11,7 @@ COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
 if not os.path.exists(COCO_MODEL_PATH):
     utils.download_trained_weights(COCO_MODEL_PATH)
 
-sys.path.append(os.path.join(ROOT_DIR, "samples/coco/"))  # To find local version
+sys.path.append(os.path.join(ROOT_DIR, "Mask_RCNN/samples/coco/"))  # To find local version
 import coco
 
 class InferenceConfig(coco.CocoConfig):
@@ -99,12 +98,13 @@ def display_instances(image, boxes, masks, ids, names, scores):
 
     return image
 
+# if __name__ == '__main__':
+#     inputfile = 'C:\\10-BigData_NoBackup\\Practice\\Mask_RCNN-master\\Mask_RCNN-master\\Bird-6542.mp4'
+#     outputfile = 'Bird_masked.avi'
+#     process(inputfile,outputfile)
 
-if __name__ == '__main__':
-    """
-        test everything
-    """
-    capture = cv2.VideoCapture('C:\\10-BigData_NoBackup\\Practice\\Mask_RCNN-master\\Mask_RCNN-master\\Bird-6542.mp4')
+def process(inputfile, outputfile) :
+    capture = cv2.VideoCapture(inputfile)
     size = (
          int(capture.get(cv2.CAP_PROP_FRAME_WIDTH)),
          int(capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -115,7 +115,7 @@ if __name__ == '__main__':
     # )
  
     codec = cv2.VideoWriter_fourcc(*'DIVX')
-    output = cv2.VideoWriter('Bird_masked.avi', codec, 60, size)
+    output = cv2.VideoWriter(outputfile, codec, 60, size)
 
     print('Begin Processing Frame ...')
 

@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+mask_rcnn_coco.h5
+/src/BirdEyeDetectorWeb/.vs/BirdEyeDetector/v15/Server/sqlite3/storage.ide-wal
+/src/BirdEyeDetectorWeb/.vs/BirdEyeDetector/v15/Server/sqlite3/storage.ide-shm
+/src/BirdEyeDetectorWeb/.vs/BirdEyeDetector/v15/Server/sqlite3/storage.ide
+/src/BirdEyeDetectorWeb/.vs/BirdEyeDetector/v15/Server/sqlite3/db.lock
+/src/BirdEyeDetectorWeb/.vs/BirdEyeDetector/v15/Server/sqlite3
+/src/BirdEyeDetectorWeb/.vs/BirdEyeDetector/v15/.suo
+/src/BirdEyeDetectorWeb/bin/Debug/net461
+/src/BirdEyeDetectorWeb/obj
