@@ -37,12 +37,11 @@ namespace BirdEyeDetector.Pages.Schedules
                 return Page();
             }
 
-            var filePath = "<PATH-AND-FILE-NAME>";
-
+           // var filePath = "<PATH-AND-FILE-NAME>";
+            var filePath = Path.GetTempFileName();
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
-                var cancellationToken = new CancellationToken();
-                await FileUpload.UploadPublicSchedule.CopyToAsync(fileStream, cancellationToken);
+                await FileUpload.UploadPublicSchedule.CopyToAsync(fileStream);
             }
 
             return RedirectToPage("./Index");
