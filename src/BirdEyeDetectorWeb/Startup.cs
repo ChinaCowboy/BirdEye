@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BirdEyeDetector.Models;
+using BirdEyeDetector.Models.Album;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -39,8 +40,9 @@ namespace BirdEyeDetector
 
             services.AddDbContext<RazorPagesMovieContext>(options =>
                options.UseSqlite("Data Source=movies.db"));
+            services.AddSingleton<AlbumCollection>();
+            services.AddSingleton<ImageProcessor>();
 
-           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
