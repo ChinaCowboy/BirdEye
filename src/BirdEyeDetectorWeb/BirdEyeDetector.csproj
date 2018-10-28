@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\albums\Day1\" />
+    <Folder Include="wwwroot\albums\Day1\thumbnail\" />
   </ItemGroup>
 
 </Project>
