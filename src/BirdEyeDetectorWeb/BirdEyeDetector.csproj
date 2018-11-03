@@ -10,6 +10,17 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
 
   <ItemGroup>
+    <Content Remove="wwwroot\albums\Day1\pexels-photo.jpg" />
+    <Content Remove="wwwroot\albums\Day1\seagulls-3777112_960_720.jpg" />
+    <Content Remove="wwwroot\albums\Day1\thumbnail\pexels-photo-190x127.jpg" />
+    <Content Remove="wwwroot\albums\Day1\thumbnail\pexels-photo-375x250.jpg" />
+    <Content Remove="wwwroot\albums\Day1\thumbnail\pexels-photo-960x640.jpg" />
+    <Content Remove="wwwroot\albums\Day1\thumbnail\seagulls-3777112_960_720-190x107.jpg" />
+    <Content Remove="wwwroot\albums\Day1\thumbnail\seagulls-3777112_960_720-375x211.jpg" />
+    <Content Remove="wwwroot\albums\Day1\thumbnail\seagulls-3777112_960_720-960x540.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="2.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.CookiePolicy" Version="2.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.1.1" />
@@ -29,7 +40,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\albums\Day1\thumbnail\" />
+    <None Include="wwwroot\albums\Day1\pexels-photo.jpg" />
+    <None Include="wwwroot\albums\Day1\seagulls-3777112_960_720.jpg" />
+    <None Include="wwwroot\albums\Day1\thumbnail\pexels-photo-190x127.jpg" />
+    <None Include="wwwroot\albums\Day1\thumbnail\pexels-photo-375x250.jpg" />
+    <None Include="wwwroot\albums\Day1\thumbnail\pexels-photo-960x640.jpg" />
+    <None Include="wwwroot\albums\Day1\thumbnail\seagulls-3777112_960_720-190x107.jpg" />
+    <None Include="wwwroot\albums\Day1\thumbnail\seagulls-3777112_960_720-375x211.jpg" />
+    <None Include="wwwroot\albums\Day1\thumbnail\seagulls-3777112_960_720-960x540.jpg" />
   </ItemGroup>
 
 </Project>

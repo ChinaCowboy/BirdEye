@@ -1,5 +1,7 @@
-﻿@page
+﻿@page "{name}/{handler?}"
 @using BirdEyeDetector.Models.Album
+@model AlbumsModel
+
 @inject AlbumCollection ac
 @{
     ViewData["Title"] = "Albums";
@@ -7,10 +9,10 @@
     ViewData["Image"] = Request.Scheme + "://" + Request.Host + ac.Albums.FirstOrDefault()?.CoverPhoto?.GetThumbnailLink((int)ImageType.Full, out int h);
 }
 
-<form id="admin" if-authorized method="post" action="~/album/new/create/">
-    <input type="text" name="name" id="name" aria-label="Album name" placeholder="Album name" required />
-    <input type="submit" id="newalbum" data-progress="Creating..." value="New album">
-</form>
+@*<form id="admin" if-authorized method="post" action="~/album/new/create/">
+        <input type="text" name="name" id="name" aria-label="Album name" placeholder="Album name" required />
+        <input type="submit" id="newalbum" data-progress="Creating..." value="New album">
+    </form>*@
 
 @if (ac.Albums.Count == 0)
 {
@@ -26,6 +28,7 @@
             var photo = album.CoverPhoto;
             if (photo != null)
             {
+                <h2> @photo.Name</h2>
                 <a href="/album/@album.UrlName/" data-text="@album.Name (@album.Photos.Count)">
                     <img photo="@photo" type="Thumbnail" />
                 </a>
