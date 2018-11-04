@@ -69,7 +69,7 @@ namespace BirdEyeDetector.Pages.Albums
             _ac.Albums.Insert(0, album);
             _ac.Sort();
 
-            return new RedirectResult($"~/album/{WebUtility.UrlEncode(name).Replace('+', ' ')}/");
+            return new RedirectResult($"~/albums/album/{WebUtility.UrlEncode(name).Replace('+', ' ')}/");
         }
 
         [Authorize]
@@ -100,7 +100,7 @@ namespace BirdEyeDetector.Pages.Albums
 
             album.Sort();
 
-            return new RedirectResult($"~/album/{WebUtility.UrlEncode(name).Replace('+', ' ')}/");
+            return new RedirectResult($"~/albums/album/{WebUtility.UrlEncode(name).Replace('+', ' ')}/");
         }
     }
 }

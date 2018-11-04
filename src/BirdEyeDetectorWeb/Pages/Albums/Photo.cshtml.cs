@@ -77,7 +77,7 @@ namespace BirdEyeDetector.Pages.Albums
                 }
             }
 
-            return new RedirectResult($"~/album/{WebUtility.UrlEncode(albumName).Replace('+', ' ')}/");
+            return new RedirectResult($"~album/{WebUtility.UrlEncode(albumName).Replace('+', ' ')}/");
         }
     }
 }

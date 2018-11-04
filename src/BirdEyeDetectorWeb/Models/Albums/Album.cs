@@ -30,7 +30,7 @@ namespace BirdEyeDetector.Models.Album
         {
             get
             {
-                return $"/album/{UrlName}/";
+                return $"album/{UrlName}/";
             }
         }
 
