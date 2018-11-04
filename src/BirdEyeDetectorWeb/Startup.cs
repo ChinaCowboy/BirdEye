@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using BirdEyeDetector.Models;
 using BirdEyeDetector.Models.Album;
 using Microsoft.AspNetCore.Builder;
@@ -42,7 +39,11 @@ namespace BirdEyeDetector
                options.UseSqlite("Data Source=movies.db"));
             services.AddSingleton<AlbumCollection>();
             services.AddSingleton<ImageProcessor>();
-
+            services.AddWebOptimizer(pipeline =>
+            {
+                pipeline.TranspileJavaScriptFiles();
+                pipeline.CompileScssFiles();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,7 +62,8 @@ namespace BirdEyeDetector
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
+            app.UseWebOptimizer();
             app.UseMvc();
             app.UseMvc(routes =>
             {
