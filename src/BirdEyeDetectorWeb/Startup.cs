@@ -61,6 +61,8 @@ namespace BirdEyeDetector
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseNodeModules(env.ContentRootPath);
+
             app.UseCookiePolicy();
             app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
             app.UseWebOptimizer();
@@ -71,6 +73,8 @@ namespace BirdEyeDetector
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
         }
     }
 }

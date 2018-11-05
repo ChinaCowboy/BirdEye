@@ -10,3 +10,5 @@ mask_rcnn_coco.h5
 /src/BirdEyeDetectorWeb/.vs/BirdEyeDetector/v15/.suo
 /src/BirdEyeDetectorWeb/bin/Debug/net461
 /src/BirdEyeDetectorWeb/obj
+/src/BirdEyeDetectorWeb/package-lock.json
+/src/BirdEyeDetectorWeb/node_modules/bootstrap
