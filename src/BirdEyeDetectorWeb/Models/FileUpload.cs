@@ -18,7 +18,6 @@ namespace BirdEyeDetector.Models
         [Display(Name = "Public Schedule")]
         public IFormFile UploadPublicSchedule { get; set; }
 
-        [Required]
         [Display(Name = "Private Schedule")]
         public IFormFile UploadPrivateSchedule { get; set; }
     }

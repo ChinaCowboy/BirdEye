@@ -13,9 +13,9 @@ namespace BirdEyeDetector.Pages.Schedules
 {
     public class IndexModel : PageModel
     {
-        private readonly BirdEyeDetector.Models.RazorPagesMovieContext _context;
+        private readonly RazorPagesAlbumContext _context;
 
-        public IndexModel(BirdEyeDetector.Models.RazorPagesMovieContext context)
+        public IndexModel(RazorPagesAlbumContext context)
         {
             _context = context;
         }
@@ -27,7 +27,7 @@ namespace BirdEyeDetector.Pages.Schedules
 
         public async Task OnGetAsync()
         {
-            Schedule = await _context.Schedule.AsNoTracking().ToListAsync();
+            Schedule = _context.Schedule;
         }
         public async Task<IActionResult> OnPostAsync()
         {
@@ -37,8 +37,8 @@ namespace BirdEyeDetector.Pages.Schedules
                 return Page();
             }
 
-           // var filePath = "<PATH-AND-FILE-NAME>";
-            var filePath = Path.GetTempFileName();
+            // var filePath = "<PATH-AND-FILE-NAME>";
+            var filePath = _context.FilePath();
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
                 await FileUpload.UploadPublicSchedule.CopyToAsync(fileStream);
@@ -52,21 +52,19 @@ namespace BirdEyeDetector.Pages.Schedules
             // attribute violations.
             if (!ModelState.IsValid)
             {
-                Schedule = await _context.Schedule.AsNoTracking().ToListAsync();
+                Schedule = _context.Schedule;
                 return Page();
             }
 
             var publicScheduleData =
                 await FileHelpers.ProcessFormFile(FileUpload.UploadPublicSchedule, ModelState);
 
-            var privateScheduleData =
-                await FileHelpers.ProcessFormFile(FileUpload.UploadPrivateSchedule, ModelState);
 
             // Perform a second check to catch ProcessFormFile method
             // violations.
             if (!ModelState.IsValid)
             {
-                Schedule = await _context.Schedule.AsNoTracking().ToListAsync();
+                Schedule =  _context.Schedule;
                 return Page();
             }
 
@@ -74,14 +72,12 @@ namespace BirdEyeDetector.Pages.Schedules
             {
                 PublicSchedule = publicScheduleData,
                 PublicScheduleSize = FileUpload.UploadPublicSchedule.Length,
-                PrivateSchedule = privateScheduleData,
-                PrivateScheduleSize = FileUpload.UploadPrivateSchedule.Length,
                 Title = FileUpload.Title,
                 UploadDT = DateTime.UtcNow
             };
 
             _context.Schedule.Add(schedule);
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

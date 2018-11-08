@@ -38,6 +38,8 @@ namespace BirdEyeDetector
             services.AddDbContext<RazorPagesMovieContext>(options =>
                options.UseSqlite("Data Source=movies.db"));
             services.AddSingleton<AlbumCollection>();
+            services.AddSingleton<RazorPagesAlbumContext>();
+
             services.AddSingleton<ImageProcessor>();
             services.AddWebOptimizer(pipeline =>
             {
