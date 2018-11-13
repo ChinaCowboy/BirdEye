@@ -8,16 +8,22 @@ using BirdEyeDetector.Models;
 using BirdEyeDetector.Utilities;
 using System.IO;
 using System.Threading;
+using BirdEyeDetector.Services;
 
 namespace BirdEyeDetector.Pages.Schedules
 {
     public class IndexModel : PageModel
     {
         private readonly RazorPagesAlbumContext _context;
+        private readonly IBackgroundTaskQueue _queue;
+        private readonly ILogger _logger;
 
-        public IndexModel(RazorPagesAlbumContext context)
+        public IndexModel(RazorPagesAlbumContext context, IBackgroundTaskQueue queue, ILoggerFactory loggerFactory)
         {
             _context = context;
+            _queue = queue;
+            _logger = loggerFactory.CreateLogger<QueuedHostedService>();
+
         }
 
         [BindProperty]
@@ -43,6 +49,24 @@ namespace BirdEyeDetector.Pages.Schedules
             {
                 await FileUpload.UploadPublicSchedule.CopyToAsync(fileStream);
             }
+
+            //Do Parse
+
+            _queue.QueueBackgroundWorkItem(async token =>
+            {
+                var guid = Guid.NewGuid().ToString();
+
+                for (int delayLoop = 0; delayLoop < 3; delayLoop++)
+                {
+                    _logger.LogInformation(
+                        $"Queued Background Task {guid} is running. {delayLoop}/3");
+                    await Task.Delay(TimeSpan.FromSeconds(5), token);
+                }
+
+                _logger.LogInformation(
+                    $"Queued Background Task {guid} is complete. 3/3");
+            });
+
 
             return RedirectToPage("./Index");
         }

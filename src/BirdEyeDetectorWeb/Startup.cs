@@ -1,6 +1,7 @@
 
 using BirdEyeDetector.Models;
 using BirdEyeDetector.Models.Album;
+using BirdEyeDetector.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -46,6 +47,9 @@ namespace BirdEyeDetector
                 pipeline.TranspileJavaScriptFiles();
                 pipeline.CompileScssFiles();
             });
+
+            services.AddHostedService<QueuedHostedService>();
+            services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
