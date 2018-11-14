@@ -9,6 +9,7 @@ using BirdEyeDetector.Utilities;
 using System.IO;
 using System.Threading;
 using BirdEyeDetector.Services;
+using Microsoft.Extensions.Logging;
 
 namespace BirdEyeDetector.Pages.Schedules
 {
@@ -44,8 +45,12 @@ namespace BirdEyeDetector.Pages.Schedules
             }
 
             // var filePath = "<PATH-AND-FILE-NAME>";
-            var filePath = _context.FilePath();
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            var filefolder = _context.FilePath();
+            string dir = Path.Combine(filefolder, FileUpload.Title);
+            Directory.CreateDirectory(dir);
+            string savePath = Path.Combine(dir, $"{FileUpload.UploadPublicSchedule.FileName}");
+
+            using (var fileStream = new FileStream(savePath, FileMode.CreateNew, FileAccess.ReadWrite))
             {
                 await FileUpload.UploadPublicSchedule.CopyToAsync(fileStream);
             }
