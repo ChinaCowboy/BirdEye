@@ -47,7 +47,8 @@ namespace BirdEyeDetector.Pages.Schedules
             // var filePath = "<PATH-AND-FILE-NAME>";
             var filefolder = _context.FilePath();
             string dir = Path.Combine(filefolder, FileUpload.Title);
-            Directory.CreateDirectory(dir);
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
             string savePath = Path.Combine(dir, $"{FileUpload.UploadPublicSchedule.FileName}");
 
             using (var fileStream = new FileStream(savePath, FileMode.CreateNew, FileAccess.ReadWrite))

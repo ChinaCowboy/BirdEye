@@ -12,3 +12,4 @@ mask_rcnn_coco.h5
 /src/BirdEyeDetectorWeb/obj
 /src/BirdEyeDetectorWeb/package-lock.json
 /src/BirdEyeDetectorWeb/node_modules/bootstrap
+/src/BirdEyeDetectorWeb/wwwroot/albums
