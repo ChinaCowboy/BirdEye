@@ -13,8 +13,8 @@ namespace BirdEyeDetector.Models.Album
             string dir = Path.Combine(Path.GetDirectoryName(filePath), "thumbnail");
             string displayName = Path.GetFileNameWithoutExtension(filePath);
             string ext = Path.GetExtension(filePath);
-
-            Directory.CreateDirectory(dir);
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
 
             var format = GetFormat(filePath);
 

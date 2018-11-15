@@ -44,7 +44,7 @@
             </th>
         </tr>
     </thead>
-    @*<tbody>
+    <tbody>
         @foreach (var item in Model.Schedule)
         {
             <tr>
@@ -60,12 +60,9 @@
                 <td class="text-center">
                     @Html.DisplayFor(modelItem => item.PublicScheduleSize)
                 </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.PrivateScheduleSize)
-                </td>
             </tr>
         }
-    </tbody>*@
+    </tbody>
 </table>
 
 @section Scripts {

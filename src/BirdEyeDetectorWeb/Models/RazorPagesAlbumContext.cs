@@ -30,10 +30,11 @@ namespace BirdEyeDetector.Models
         {
 
             var directory = new DirectoryInfo(FilePath());
-            var schedules = directory.EnumerateFiles()
-                .Where(f => IsImageFile(f.FullName))
+            var schedules = directory.EnumerateDirectories()
+                //.Where(f => IsFolder(f.FileName))
                 //.OrderByDescending(f => f.LastWriteTime)
-                .Select(a => new Schedule() { Title = a.FullName });
+                .Select(a => new Schedule() { Title = a.Name });
+            Schedule = schedules.ToList();
 
         }
         public bool IsImageFile(string file)
@@ -41,6 +42,7 @@ namespace BirdEyeDetector.Models
             string ext = Path.GetExtension(file);
             return _extensions.Contains(ext, StringComparer.OrdinalIgnoreCase);
         }
+
         public List<Movie> Movie { get; set; }
         public List<Schedule> Schedule { get; set; }
 

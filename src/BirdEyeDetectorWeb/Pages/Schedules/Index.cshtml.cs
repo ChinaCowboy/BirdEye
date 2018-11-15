@@ -10,6 +10,7 @@ using System.IO;
 using System.Threading;
 using BirdEyeDetector.Services;
 using Microsoft.Extensions.Logging;
+using BirdEyeDetector.Models.Album;
 
 namespace BirdEyeDetector.Pages.Schedules
 {
@@ -18,19 +19,24 @@ namespace BirdEyeDetector.Pages.Schedules
         private readonly RazorPagesAlbumContext _context;
         private readonly IBackgroundTaskQueue _queue;
         private readonly ILogger _logger;
+        private ImageProcessor _processor;
 
-        public IndexModel(RazorPagesAlbumContext context, IBackgroundTaskQueue queue, ILoggerFactory loggerFactory)
+        public IndexModel(RazorPagesAlbumContext context, 
+            IBackgroundTaskQueue queue, 
+            ILoggerFactory loggerFactory,
+            ImageProcessor processor)
         {
             _context = context;
             _queue = queue;
             _logger = loggerFactory.CreateLogger<QueuedHostedService>();
+            _processor = processor;
 
         }
 
         [BindProperty]
         public FileUpload FileUpload { get; set; }
 
-        public IList<Schedule> Schedule { get; private set; }
+        public IList<Schedule> Schedule { get; set; }
 
         public async Task OnGetAsync()
         {
@@ -54,6 +60,7 @@ namespace BirdEyeDetector.Pages.Schedules
             using (var fileStream = new FileStream(savePath, FileMode.CreateNew, FileAccess.ReadWrite))
             {
                 await FileUpload.UploadPublicSchedule.CopyToAsync(fileStream);
+                _processor.CreateThumbnails(fileStream, savePath);
             }
 
             //Do Parse
