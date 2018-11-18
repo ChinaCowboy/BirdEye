@@ -17,7 +17,7 @@ namespace BirdEyeDetector.Models.Album
                 Directory.CreateDirectory(dir);
 
             var format = GetFormat(filePath);
-
+     
             using (var inputStream = new SKManagedStream(imageStream))
             using (var codec = SKCodec.Create(inputStream))
             using (var original = SKBitmap.Decode(codec))

@@ -43,7 +43,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
     <PackageReference Include="React.AspNet.Middleware" Version="4.0.0-beta5" />
     <PackageReference Include="SharpScss" Version="1.4.0" />
-    <PackageReference Include="SkiaSharp" Version="1.60.3" />
+    <PackageReference Include="SkiaSharp" Version="1.68.0-preview28" />
   </ItemGroup>
 
   <ItemGroup>

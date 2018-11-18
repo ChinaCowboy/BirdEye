@@ -33,10 +33,28 @@ namespace BirdEyeDetector.Models
             var schedules = directory.EnumerateDirectories()
                 //.Where(f => IsFolder(f.FileName))
                 //.OrderByDescending(f => f.LastWriteTime)
-                .Select(a => new Schedule() { Title = a.Name });
+                .Select(a => new Schedule() { Title = a.Name , UploadDT= a.CreationTime, PublicScheduleSize= DirSize(a)});
             Schedule = schedules.ToList();
 
         }
+        public static long DirSize(DirectoryInfo d)
+        {
+            long size = 0;
+            // Add file sizes.
+            FileInfo[] fis = d.GetFiles();
+            foreach (FileInfo fi in fis)
+            {
+                size += fi.Length;
+            }
+            // Add subdirectory sizes.
+            DirectoryInfo[] dis = d.GetDirectories();
+            foreach (DirectoryInfo di in dis)
+            {
+                size += DirSize(di);
+            }
+            return size;
+        }
+
         public bool IsImageFile(string file)
         {
             string ext = Path.GetExtension(file);

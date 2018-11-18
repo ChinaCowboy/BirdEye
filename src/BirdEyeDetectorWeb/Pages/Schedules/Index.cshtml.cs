@@ -59,8 +59,8 @@ namespace BirdEyeDetector.Pages.Schedules
 
             using (var fileStream = new FileStream(savePath, FileMode.CreateNew, FileAccess.ReadWrite))
             {
-                await FileUpload.UploadPublicSchedule.CopyToAsync(fileStream);
                 _processor.CreateThumbnails(fileStream, savePath);
+                 await FileUpload.UploadPublicSchedule.CopyToAsync(fileStream);
             }
 
             //Do Parse
