@@ -43,11 +43,8 @@
     </aside>
 </div>
 
-@section scripts{
-    <script if-authorized src="/js/admin.js" async></script>
-}
 
-@section head {
+@*@section head {
     <link if-authorized rel="stylesheet" href="/css/admin.scss" />
     <link rel="index" href="@Model.Photo.Album.Link" />
     @if (Model.Photo.Next != null)
@@ -59,4 +56,4 @@
     {
         <link rel="prev" href="@Model.Photo.Previous.Link" />
     }
-}
+}*@

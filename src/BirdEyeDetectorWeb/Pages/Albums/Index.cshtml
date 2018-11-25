@@ -21,7 +21,7 @@
             var photo = album.CoverPhoto;
             if (photo != null)
             {
-                <a href="album/@album.UrlName/" data-text="@album.Name (@album.Photos.Count)">
+                <a href="albums/album/@album.UrlName/" data-text="@album.Name (@album.Photos.Count)">
                     <img photo="@photo" type="Thumbnail" />
                 </a>
             }

@@ -79,7 +79,7 @@ namespace BirdEyeDetector.Models.Album
         {
             get
             {
-                return $"/photo/{Album.UrlName}/{UrlName}/";
+                return $"/albums/photo/{Album.UrlName}/{UrlName}/";
             }
         }
 
@@ -87,7 +87,7 @@ namespace BirdEyeDetector.Models.Album
         {
             get
             {
-                return $"/albums/{Album.UrlName}/{Name.Replace(" ", "%20").ToLowerInvariant()}";
+                return $"/albums//photo/{Album.UrlName}/{Name.Replace(" ", "%20").ToLowerInvariant()}";
             }
         }
 
