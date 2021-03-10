@@ -13,3 +13,7 @@ mask_rcnn_coco.h5
 /src/BirdEyeDetectorWeb/package-lock.json
 /src/BirdEyeDetectorWeb/node_modules/bootstrap
 /src/BirdEyeDetectorWeb/wwwroot/albums
+/src/BirdEyeDetectorWeb/.vs/BirdEyeDetector/config/applicationhost.config
+/src/BirdEyeDetectorWeb/.vs/BirdEyeDetector/v16/Server/sqlite3
+/src/BirdEyeDetectorWeb/bin/Debug/netcoreapp3.1
+/src/BirdEyeDetectorWeb/.vs/BirdEyeDetector/v16

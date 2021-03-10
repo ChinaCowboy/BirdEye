@@ -30,10 +30,14 @@
                 <a asp-page="/Index" class="navbar-brand">BirdEyeDetector</a>
             </div>
             <div class="navbar-collapse collapse">
+        
                 <ul class="nav navbar-nav">
                     <li><a asp-page="/Index">Home</a></li>
                     <li><a asp-page="/Albums/Index">Browse</a></li>
                     <li><a asp-page="/Contact">Contact</a></li>
+                        <div class="col-md-2 modal-title">
+                            <partial name="_LoginPartial.cshtml" />
+                        </div>
                 </ul>
             </div>
         </div>
@@ -42,6 +46,7 @@
     <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
+
         @RenderBody()
         <hr />
         <footer>
